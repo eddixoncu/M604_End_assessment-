@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Infractions</title>
+</head>
+<body>
+    <h1>Infractions web site</h1>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'London')">People</button>
+  <button class="tablinks" onclick="openTab(event, 'Paris')">Vehicle</button>
+  <button class="tablinks" onclick="openTab(event, 'Tokyo')">Infractions</button>
+  <button class="tablinks" onclick="openTab(event, 'Report')">Report</button>
+</div>
+
+<div id="London" class="tabcontent">
+  <h3>People</h3>
+  <p>List of Owners of vehicles</p>
+</div>
+
+<div id="Paris" class="tabcontent">
+  <h3>Vehicles</h3>
+  <p>List of vehicles</p>
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Infactions</h3>
+  <p>List of infractions</p>
+</div>
+
+<div id="Report" class="tabcontent">
+  <h3>Visualizations</h3>
+  <p>Miscelaneous resports</p>
+</div>
+</body>
+<script>
+function openTab(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+</html>
