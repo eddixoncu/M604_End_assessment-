@@ -10,3 +10,8 @@ def get_vehicles():
         vehicles.append(v)
     '''
     return vehicles
+
+def get_owners():
+    owners =[]
+    owners = get_owners_from_db()
+    return owners

@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+ 
     <title>Infractions</title>
 </head>
 <body>
@@ -19,29 +22,33 @@
   <h3>People</h3>
   <p>List of Owners of vehicles</p>
   {% block content %}
-    <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
-    </form>
+    
+    <table>
+      <thead>
+        <tr><th> Document number</th>
+        <th>Name</th>
+        <th>Last name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for o in owners %}
+        <tr>
+          <td><a href="{{ url_for('infractions.owner', id=o.document_number) }}"> {{o.document_number}}</a></td>
+          <td>{{o.names}}</td>
+          <td>{{o.last_names}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    
  {# {% endblock %} #}
 </div>
 
 <div id="Vehicles" class="tabcontent">
   <h3>Vehicles</h3>
   <p>List of vehicles</p>
-  
-  
-  
+   
     {# {% block content %} #}
     <table>
       <thead>
@@ -52,7 +59,12 @@
       <tbody>
         {% for v in vehicles %}
         <tr>
-          <td>{{v.plate}}</td><td>{{v.brand}}</td>
+          <td>
+            <button>
+              {{v.plate}}
+            </button>
+          </td>
+          <td>{{v.brand}}</td>
         </tr>
         {% endfor %}
       </tbody>
