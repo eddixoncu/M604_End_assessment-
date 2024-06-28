@@ -9,30 +9,68 @@
     <h1>Infractions web site</h1>
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'London')">People</button>
-  <button class="tablinks" onclick="openTab(event, 'Paris')">Vehicle</button>
-  <button class="tablinks" onclick="openTab(event, 'Tokyo')">Infractions</button>
-  <button class="tablinks" onclick="openTab(event, 'Report')">Report</button>
+  <button class="tablinks" onclick="openTab(event, 'People')">People</button>
+  <button class="tablinks" onclick="openTab(event, 'Vehicles')">Vehicle</button>
+  <button class="tablinks" onclick="openTab(event, 'Infractions')">Infractions</button>
+  <button class="tablinks" onclick="openTab(event, 'Visual')">Report</button>
 </div>
 
-<div id="London" class="tabcontent">
+<div id="People" class="tabcontent">
   <h3>People</h3>
   <p>List of Owners of vehicles</p>
+  {% block content %}
+    <h1>Sign In</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+ {# {% endblock %} #}
 </div>
 
-<div id="Paris" class="tabcontent">
+<div id="Vehicles" class="tabcontent">
   <h3>Vehicles</h3>
   <p>List of vehicles</p>
+  
+  
+  
+    {# {% block content %} #}
+    <table>
+      <thead>
+        <tr>
+          <th>Plate</th><th>Brand</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for v in vehicles %}
+        <tr>
+          <td>{{v.plate}}</td><td>{{v.brand}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endblock %}  
+  
+    
+    
 </div>
 
-<div id="Tokyo" class="tabcontent">
+<div id="Infractions" class="tabcontent">
   <h3>Infactions</h3>
   <p>List of infractions</p>
 </div>
 
-<div id="Report" class="tabcontent">
+<div id="Visual" class="tabcontent">
   <h3>Visualizations</h3>
-  <p>Miscelaneous resports</p>
+  <p>Miscelaneous reports!!</p>
 </div>
 </body>
 <script>
