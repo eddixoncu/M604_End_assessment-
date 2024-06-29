@@ -119,12 +119,17 @@ Out[88]:
                        'display.max_columns', None,
                        'display.precision', 3,
                        ):
-        print(df)
+        #print(df)
         chart=df.sum().to_dict()
-        colors=["black","yellow"]
+        colors=["green","yellow"]
         mylabels = chart.keys()
         values = chart.values()
-        plt.pie(values, labels=mylabels, colors=colors)
-        plt.legend(title="Payment Distribution")
+        
+        fig, ax = plt.subplots()
+        ax.pie(values, labels=mylabels, autopct='%.0f%%',
+            textprops={'size': 'smaller'}, radius=0.5, colors=colors)
+
+        #plt.pie(values, labels=mylabels, colors=colors)
+        ax.legend(title="Payment Distribution")
         plt.show()
        
