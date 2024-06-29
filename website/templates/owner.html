@@ -11,6 +11,17 @@
 <body>
 
 {% block content %}
-<h1>owner {{id }}</h1>
+<h1>owner {{id}}</h1>
+<form action="" method="POST" >
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+    <p>
+        {{form.name.label}} <span> {{form.name(size =35)}}
+    </p>
+    <p>
+        {{form.last_name.label}} <span> {{form.last_name(size =35)}}
+    </p>
+    <p>{{form.register()}} </p>
+</form>
 {% endblock %}
 </body>

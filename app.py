@@ -2,7 +2,6 @@ from website import create_app
 import webbrowser
 from threading import Timer
 
-print('data data data')
 
 app = create_app()
 
