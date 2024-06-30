@@ -48,11 +48,11 @@ def get_owner_by_document_db(document_number):
         with sqlite3.connect(_path) as conn:
             print('consultado ower ', document_number)
             cursor = conn.cursor()
-            sql = '''
-                  select  p.NUMERO_DOCUMENTO, p.NOMBRES, p.APELLIDOS FROM person p WHERE p.NUMERO_DOCUMENTO = ? 
+            sql = f'''
+                  select  p.NUMERO_DOCUMENTO, p.NOMBRES, p.APELLIDOS FROM person p WHERE p.NUMERO_DOCUMENTO = '{document_number}' 
                    '''
-            args=(document_number)
-            cursor.execute(sql,args)
+            #args=(document_number)
+            cursor.execute(sql)
             row = cursor.fetchone()
             if row:
                 print('SI EXISTE OWNER')

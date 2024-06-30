@@ -17,7 +17,7 @@ def get_owners():
     return owners
 
 def get_owner_by_document(document_number):
-    owner = get_owner_by_document_db(document_number=document_number)
+    _, owner = get_owner_by_document_db(document_number=document_number)
     return owner
 
 def update_owner (owner:Owner):

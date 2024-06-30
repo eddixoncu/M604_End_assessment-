@@ -13,4 +13,4 @@ class OwnerForm(FlaskForm):
     document_number = StringField('document_number', validators=[DataRequired()]) 
     name = StringField('name', validators=[DataRequired()])
     last_name = StringField('last_name', validators=[DataRequired()])    
-    register = SubmitField('Register')
+    register = SubmitField('Submit')

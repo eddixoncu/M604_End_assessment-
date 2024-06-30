@@ -25,15 +25,14 @@ def owner(id):
         print(f'doc is {id}')
         print(f'name is {form.name.data}')
         print(f'last is {form.last_name.data}')
-        #owner = Owner(document_number=id,names= form.name.data, last_names=form.last_name.data)
-        #succes,reason = update_owner(owner)
+        owner = Owner(document_number=id,names= form.name.data, last_names=form.last_name.data)
+        succes,reason = update_owner(owner)
+        return redirect(url_for('infractions.home'))
     else:
         owner = get_owner_by_document(id)
-        #print(f'names is {owner.names}')
-        #form.name.data = owner.names
-        #form.last_name.data = owner.last_names
-        
-   
-    return render_template('owner.html',id=id, form=form)
+        print(f'names is {owner.names}')
+        form.name.data = owner.names
+        form.last_name.data = owner.last_names
+        return render_template('owner.html',id=id, form=form)
 
     
