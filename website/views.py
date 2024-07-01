@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template,redirect, url_for, request
-from website.forms import LoginForm,OwnerForm
+from website.forms import LoginForm,OwnerForm, VehicleForm
 from .controller import get_owner_by_document, get_vehicles, get_owners, update_owner
 from .models import Owner
 
@@ -35,4 +35,14 @@ def owner(id):
         form.last_name.data = owner.last_names
         return render_template('owner.html',id=id, form=form)
 
-    
+
+@infractions.route('/vehicle/<plate>',methods=['GET','POST'])
+def vehicle(plate):
+    print(plate)
+    form = VehicleForm()
+    form.plate.data = plate
+    choices=[('cpp', 'C++'), ('py', 'Python'),('text', 'Plain Text')]
+    form.brands.choices = choices
+    form.brands.
+
+    return render_template('vehicle.html')
