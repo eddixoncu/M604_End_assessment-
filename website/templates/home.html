@@ -53,16 +53,14 @@
     <table>
       <thead>
         <tr>
-          <th>Plate</th><th>Brand</th>
+          <th>Plate</th><th>Brand</th><th>Owner</th>
         </tr>
       </thead>
       <tbody>
         {% for v in vehicles %}
         <tr>
           <td>
-            <button>
-              {{v.plate}}
-            </button>
+            <a href="{{ url_for('infractions.vehicle', plate=v.plate) }}"> {{v.plate}}</a>
           </td>
           <td>{{v.brand}}</td>
         </tr>
